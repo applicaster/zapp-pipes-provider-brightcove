@@ -1,17 +1,11 @@
 export const manifest = {
-  handlers: ['collection', 'item'],
+  handlers: ['playlist'],
   help: {
-    collection: {
-      description: 'retrieves a collection or a list of collection',
+    playlist: {
+      description: 'return a feed of all the videos in the requested playlist',
       params: {
-        id: 'optional. if provided, will return that specific collection. Will return all collections if ommited',
+        url: 'playlist url'
       }
-    },
-    item: {
-      description: 'retrieves the item with the given id',
-      params: {
-        id: 'required. id of the requested item',
-      },
-    },
+    }
   }
 };

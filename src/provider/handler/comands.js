@@ -1,8 +1,5 @@
-
-import { getCollection } from './getCollection';
-import { getItem } from './getItem';
+import { getPlaylist } from './getPlaylist';
 
 export const commands = {
-  collection: getCollection,
-  item: getItem,
+  playlist: getPlaylist
 };

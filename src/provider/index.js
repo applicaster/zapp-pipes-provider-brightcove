@@ -3,10 +3,10 @@ import { handler } from './handler';
 import { test } from './test';
 
 const provider = {
-  name: 'starter-kit',
+  name: 'brightcove',
   manifest,
   handler,
-  test,
+  test
 };
 
 export default provider;
