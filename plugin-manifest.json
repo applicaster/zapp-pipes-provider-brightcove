@@ -1,0 +1,36 @@
+{
+  "api": {},
+  "dependency_repository_url": [
+    "https://github.com/applicaster/zapp-pipes-provider-brightcove"
+  ],
+  "platform": null,
+  "author_name": "Yaniv Solnik",
+  "author_email": "y.solnik@applicaster.com",
+  "manifest_version": "0.1.1",
+  "name": "Brightcove DS",
+  "description": "A Brightcove plugin",
+  "type": "data_source_provider",
+  "identifier": "brightcove-ds",
+  "dependency_name": "@applicaster/zapp-pipes-provider-brightcove",
+  "dependency_version": "1.0.0",
+  "whitelisted_account_ids": [],
+  "min_zapp_sdk": "4.0.0",
+  "deprecated_since_zapp_sdk": "",
+  "unsupported_since_zapp_sdk": "",
+  "scheme": "brightcove",
+  "data_types": [
+    {
+      "label": "Playlist",
+      "value": "playlist",
+      "documentation": {
+        "link":
+          "https://github.com/applicaster/zapp-pipes-provider-brightcove#readme",
+        "input_description":
+          "Playlist full URL, client_id, client_secret, account_id",
+        "input_placeholder":
+          "Please enter Playlist URL & client_id & client_secret & account_id",
+        "input_description_image_url": ""
+      }
+    }
+  ]
+}
