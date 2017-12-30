@@ -27,7 +27,8 @@ export function getPlaylist(params) {
   const {
     client_id: qclient_id,
     client_secret: qclient_secret,
-    account_id: qaccount_id
+    account_id: qaccount_id,
+    playlistId: qplaylistId
   } =
     aUrl.query || {};
 
@@ -35,7 +36,7 @@ export function getPlaylist(params) {
   const csecret = qclient_secret || client_secret;
   const accountId = qaccount_id || account_id;
 
-  const playlistId = paths[paths.length - 1];
+  const playlistId = qplaylistId || paths[paths.length - 1];
   return api
     .getPlaylist(cid, csecret, accountId, playlistId)
     .then(result => {
