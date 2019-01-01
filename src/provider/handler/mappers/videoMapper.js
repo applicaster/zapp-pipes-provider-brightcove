@@ -18,7 +18,7 @@ export function videoMapper(video) {
     }
   }
 
-  let link = null;
+  let link;
   if (video.link && video.link.url) {
     link = {
       type: 'text/html',
