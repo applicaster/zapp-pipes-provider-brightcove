@@ -1,9 +1,9 @@
 import { createMediaGroupItem } from '../../../utils';
 
 export function videoMapper(video) {
-  const { id, name: title, published_at: publish, src = '', images } = video;
+  const { id, name: title, published_at: published, src = '', images } = video;
 
-  const content = { src };
+  const content = { src, type: 'video/hls' };
 
   let media_group = [];
   if (images) {
@@ -33,7 +33,7 @@ export function videoMapper(video) {
     },
     id,
     title,
-    publish,
+    published,
     media_group,
     content,
     link
