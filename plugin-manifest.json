@@ -18,6 +18,7 @@
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
   "scheme": "brightcove",
+  "ui_builder_support": true,
   "data_types": [
     {
       "label": "Playlist",
