@@ -5,7 +5,8 @@ export function videoMapper(video) {
   const { id, name: title, published_at, src = '', images } = video;
 
   const content = { src, type: 'video/hls' };
-  const published = moment.unix(moment(published_at)).format()
+  const d = moment(published_at).toDate();
+  const published = moment(d).format()
 
   let media_group = [];
   if (images) {
