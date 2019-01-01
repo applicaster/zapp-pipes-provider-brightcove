@@ -1,9 +1,11 @@
 import { createMediaGroupItem } from '../../../utils';
+import moment from 'moment'
 
 export function videoMapper(video) {
-  const { id, name: title, published_at: published, src = '', images } = video;
+  const { id, name: title, published_at, src = '', images } = video;
 
   const content = { src, type: 'video/hls' };
+  const published = moment.unix(moment(published_at)).format()
 
   let media_group = [];
   if (images) {
