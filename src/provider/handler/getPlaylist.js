@@ -37,13 +37,16 @@ export function getPlaylist(params) {
   const accountId = qaccount_id || account_id;
 
   const playlistId = qplaylistId || paths[paths.length - 1];
+
+  let videosResult = [];
+
   return api
     .getPlaylist(cid, csecret, accountId, playlistId)
     .then(result => {
       return result;
     })
     .then(videos => {
-      this.videos = videos;
+      videosResult = videos;
       return Promise.all(
         videos.map(video => {
           return api.getVideoSource(cid, csecret, accountId, video.id);
@@ -51,7 +54,7 @@ export function getPlaylist(params) {
       );
     })
     .then(sources => {
-      return this.videos.map(video => {
+      return videosResult.map(video => {
         const videoSources = sources.filter(source => {
           return source.videoId === video.id;
         });

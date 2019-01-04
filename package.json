@@ -1,6 +1,6 @@
 {
   "name": "@applicaster/zapp-pipes-provider-brightcove",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "description": "Brightcove provider",
   "main": "lib/index.js",
   "scripts": {
@@ -27,7 +27,8 @@
   "homepage": "https://github.com/applicaster/zapp-pipes-provider-brightcove#readme",
   "dependencies": {
     "axios": "^0.17.1",
-    "btoa": "^1.1.2"
+    "btoa": "^1.1.2",
+    "moment": "^2.23.0"
   },
   "devDependencies": {
     "@applicaster/zapp-pipes-dev-kit": "^1.0.9",

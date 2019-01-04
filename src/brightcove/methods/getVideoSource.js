@@ -6,15 +6,16 @@ export function getVideoSource(client_id, client_secret, accountId, videoId) {
   return getAuthenticationHeaders(client_id, client_secret)
     .then(headers => {
       return axios.get(
-        `${config.brightcove.cmsAPIBaseUrl}accounts/${accountId}/videos/${
-          videoId
-        }/sources`,
+        `${
+          config.brightcove.cmsAPIBaseUrl
+        }accounts/${accountId}/videos/${videoId}/sources`,
         { headers }
       );
     })
     .then(result => {
       const source = result.data.reduce((currentSource, element) => {
         if (
+          element.src &&
           element.codec &&
           element.codec.toLowerCase() === 'h264' &&
           element.container &&
