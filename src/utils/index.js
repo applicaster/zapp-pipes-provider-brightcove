@@ -1,3 +1,5 @@
+import _url from 'url';
+
 export function createMediaGroupItem(src, key) {
   return {
     type: 'image',
@@ -17,4 +19,37 @@ export function createFeedItem(entry) {
     },
     entry
   };
+}
+
+export function updateParamsFromUrl(params) {
+  const { url = '' } = params;
+  let q = {};
+  try {
+    const aUrl = _url.parse(url, true);
+    q = aUrl.query;
+    Object.keys(q).forEach(key => {
+      if (!params[key]) {
+        params[key] = q[key];
+      }
+    });
+  } catch (err) {
+  } finally {
+    return params;
+  }
+}
+
+export function updateParamsFromPluginConfiguration(providerInterface, params) {
+  try {
+    const { pluginConfigurations } = providerInterface.appData();
+    if (pluginConfigurations) {
+      Object.keys(pluginConfigurations).forEach(key => {
+        if (!params[key]) {
+          params[key] = pluginConfigurations[key];
+        }
+      });
+    }
+  } catch (err) {
+  } finally {
+    return params;
+  }
 }
