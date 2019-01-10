@@ -4,39 +4,28 @@ import { createFeedItem } from '../../utils';
 import _url from 'url';
 
 export function getPlaylist(params) {
-  const { url, client_id, client_secret, account_id } = params;
+  const {
+    url = '',
+    id: _playlistId,
+    client_id,
+    client_secret,
+    account_id
+  } = params;
 
   const aUrl = _url.parse(url, true);
-
-  //make sure this is a valid playlist url
-  if (!aUrl) {
-    throw {
-      message: 'this is not a valid playlist url',
-      statusCode: 500
-    };
-  }
-
-  const paths = aUrl.pathname.split('/');
-  if (paths.length === 0) {
-    throw {
-      message: 'this is not a valid playlist url',
-      statusCode: 500
-    };
-  }
 
   const {
     client_id: qclient_id,
     client_secret: qclient_secret,
     account_id: qaccount_id,
-    playlistId: qplaylistId
-  } =
-    aUrl.query || {};
+    id: qplaylistId
+  } = aUrl.query || {};
 
   const cid = qclient_id || client_id;
   const csecret = qclient_secret || client_secret;
   const accountId = qaccount_id || account_id;
 
-  const playlistId = qplaylistId || paths[paths.length - 1];
+  const playlistId = qplaylistId || _playlistId;
 
   let videosResult = [];
 

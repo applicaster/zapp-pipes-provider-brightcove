@@ -4,7 +4,7 @@ export const manifest = {
     playlist: {
       description: 'return a feed of all the videos in the requested playlist',
       params: {
-        url: 'playlist url'
+        id: 'playlist id'
       }
     }
   }
