@@ -42,9 +42,10 @@ export function updateParamsFromPluginConfiguration(providerInterface, params) {
   try {
     const { pluginConfigurations } = providerInterface.appData();
     if (pluginConfigurations) {
-      Object.keys(pluginConfigurations).forEach(key => {
+      const o = JSON.parse(pluginConfigurations);
+      Object.keys(o).forEach(key => {
         if (!params[key]) {
-          params[key] = pluginConfigurations[key];
+          params[key] = o[key];
         }
       });
     }
