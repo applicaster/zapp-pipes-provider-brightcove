@@ -43,9 +43,10 @@ export function updateParamsFromPluginConfiguration(providerInterface, params) {
     const { pluginConfigurations } = providerInterface.appData();
     if (pluginConfigurations) {
       const o = JSON.parse(pluginConfigurations);
-      Object.keys(o).forEach(key => {
+      const bc = o['brightcove-ds']
+      Object.keys(bc).forEach(key => {
         if (!params[key]) {
-          params[key] = o[key];
+          params[key] = bc[key];
         }
       });
     }
