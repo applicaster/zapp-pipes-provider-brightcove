@@ -9,8 +9,7 @@ export async function getPlaylist(
   client_id,
   client_secret,
   accountId,
-  playlistId,
-  query
+  playlistId
 ) {
   try {
     const headers = await getAuthenticationHeaders(client_id, client_secret);
@@ -23,13 +22,12 @@ export async function getPlaylist(
     );
 
     const { name: title } = playlist;
-    query = query ? `q=${query}` : '';
     let {
       data: { count }
     } = await axios.get(
       `${
         config.brightcove.cmsAPIBaseUrl
-      }accounts/${accountId}/counts/playlists/${playlistId}/videos?${query}`,
+      }accounts/${accountId}/counts/playlists/${playlistId}/videos`,
       { headers }
     );
 
@@ -39,7 +37,7 @@ export async function getPlaylist(
       const result = await axios.get(
         `${
           config.brightcove.cmsAPIBaseUrl
-        }accounts/${accountId}/playlists/${playlistId}/videos?${query}&offset=${offset}&limit=${API_PAGE_LIMIT}`,
+        }accounts/${accountId}/playlists/${playlistId}/videos?&offset=${offset}&limit=${API_PAGE_LIMIT}`,
         { headers }
       );
       allItems = [...allItems, ...result.data];
