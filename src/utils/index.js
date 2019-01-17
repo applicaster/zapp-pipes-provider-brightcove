@@ -12,11 +12,12 @@ export function createMediaGroupItem(src, key) {
   };
 }
 
-export function createFeedItem(entry) {
+export function createFeedItem(entry, title) {
   return {
     type: {
       value: 'feed'
     },
+    title,
     entry
   };
 }
@@ -42,8 +43,13 @@ export function updateParamsFromPluginConfiguration(providerInterface, params) {
   try {
     const { pluginConfigurations } = providerInterface.appData();
     if (pluginConfigurations) {
-      const o = JSON.parse(pluginConfigurations);
-      const bc = o['brightcove-ds']
+      let o;
+      try {
+        o = JSON.parse(pluginConfigurations);
+      } catch (err) {
+        o = pluginConfigurations;
+      }
+      const bc = o['brightcove-ds'];
       Object.keys(bc).forEach(key => {
         if (!params[key]) {
           params[key] = bc[key];

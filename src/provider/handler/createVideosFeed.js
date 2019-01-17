@@ -3,8 +3,8 @@ import { createFeedItem } from '../../utils';
 import { api } from '../../brightcove';
 
 export function createVideosFeed(params) {
-  return function(videos) {
-    const { client_id, client_secret, account_id } = params;
+  return function({ title, items: videos }) {
+    const { client_id, client_secret, account_id, title: ptitle } = params;
 
     return Promise.all(
       videos.map(video => {
@@ -32,7 +32,7 @@ export function createVideosFeed(params) {
         return items.map(videoMapper);
       })
       .then(items => {
-        return createFeedItem(items);
+        return createFeedItem(items, ptitle || title);
       });
   };
 }
