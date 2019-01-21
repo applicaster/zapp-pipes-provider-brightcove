@@ -44,7 +44,7 @@ export function videoMapper(video) {
     video_ads = cue_points.map(cuepoint => {
       const { time, metadata: ad_url } = cuepoint;
       const offset =
-        time === 0 ? 'preroll' : time === duration ? 'postroll' : time;
+        time === 0 ? 'preroll' : Math.round(time) >= Math.round(duration) ? 'postroll' : time;
       return { offset, ad_url };
     });
   }
