@@ -29,7 +29,27 @@
         "input_placeholder": "Please enter Playlist Id",
         "input_description_image_url": ""
       }
-    }
+    },
+    {
+      "label": "Folder",
+      "value": "folder",
+      "documentation": {
+        "link": "https://github.com/applicaster/zapp-pipes-provider-brightcove#readme",
+        "input_description": "Folder Id",
+        "input_placeholder": "Please enter Folder Id",
+        "input_description_image_url": ""
+      }
+    },
+    {
+      "label": "Search",
+      "value": "search",
+      "documentation": {
+        "link": "https://github.com/applicaster/zapp-pipes-provider-brightcove#readme",
+        "input_description": "Search Qieru",
+        "input_placeholder": "Please enter Search Query",
+        "input_description_image_url": ""
+      }
+    }        
   ],
   "custom_configuration_fields": [
     {
