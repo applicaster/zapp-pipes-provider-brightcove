@@ -11,7 +11,7 @@ export function search(params) {
   } = params;
 
   return api
-    .search(client_id, client_secret, account_id, query, limit, sort_by)
+    .search(client_id, client_secret, account_id, query, limit, sort_by, item_type === 'playlists')
     .then(result => {
       return result;
     });

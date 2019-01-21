@@ -10,9 +10,11 @@ export async function search(
   accountId,
   query,
   maxCount,
-  sort
+  sort,
+  isPlaylistsSearch
 ) {
   try {
+    const path = isPlaylistsSearch ? 'playlists' : 'videos';
     const headers = await getAuthenticationHeaders(client_id, client_secret);
     query = query ? `q=${query}` : '';
     sort = sort ? `sort=${sort}` : '';
@@ -21,7 +23,7 @@ export async function search(
     } = await axios.get(
       `${
         config.brightcove.cmsAPIBaseUrl
-      }accounts/${accountId}/counts/videos?${query}`,
+      }accounts/${accountId}/counts/${path}?${query}`,
       { headers }
     );
 
@@ -38,7 +40,7 @@ export async function search(
       const result = await axios.get(
         `${
           config.brightcove.cmsAPIBaseUrl
-        }accounts/${accountId}/videos?${query}&offset=${offset}&limit=${limit}&${sort}`,
+        }accounts/${accountId}/${path}?${query}&offset=${offset}&limit=${limit}&${sort}`,
         { headers }
       );
       allItems = [...allItems, ...result.data];

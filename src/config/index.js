@@ -3,5 +3,8 @@ export const config = {
     baseUrl: '',
     tokenUrl: 'https://oauth.brightcove.com/v4/access_token',
     cmsAPIBaseUrl: 'https://cms.api.brightcove.com/v1/'
+  },
+  provider: {
+    name: 'brightcove'
   }
 };
