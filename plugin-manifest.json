@@ -12,7 +12,7 @@
   "type": "data_source_provider",
   "identifier": "brightcove-ds",
   "dependency_name": "@applicaster/zapp-pipes-provider-brightcove",
-  "dependency_version": "1.1.5",
+  "dependency_version": "1.1.6",
   "whitelisted_account_ids": [],
   "min_zapp_sdk": "4.0.0",
   "deprecated_since_zapp_sdk": "",
@@ -49,7 +49,7 @@
         "input_placeholder": "Please enter Search Query",
         "input_description_image_url": ""
       }
-    }        
+    }
   ],
   "custom_configuration_fields": [
     {
