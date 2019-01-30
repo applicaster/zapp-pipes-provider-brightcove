@@ -4,7 +4,13 @@ import { api } from '../../brightcove';
 
 export function createVideosFeed(params) {
   return function({ title, items: videos }) {
-    const { client_id, client_secret, account_id, title: ptitle } = params;
+    const {
+      client_id,
+      client_secret,
+      account_id,
+      title: ptitle,
+      imageKeys = 'thumbnail:image_base|poster:image1'
+    } = params;
 
     return Promise.all(
       videos.map(video => {
@@ -29,7 +35,7 @@ export function createVideosFeed(params) {
         });
       })
       .then(items => {
-        return items.map(videoMapper);
+        return items.map(videoMapper(imageKeys.split('|')));
       })
       .then(items => {
         return createFeedItem(items, ptitle || title);
