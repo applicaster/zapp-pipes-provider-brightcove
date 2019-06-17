@@ -11,7 +11,8 @@ export function videoMapper(imageKeys) {
       images,
       cue_points,
       duration = 0,
-      custom_fields = {}
+      custom_fields = {},
+      text_tracks: _text_tracks
     } = video;
 
     const content = { src, type: 'video/hls' };
@@ -52,7 +53,17 @@ export function videoMapper(imageKeys) {
         return { offset, ad_url };
       });
     }
-    const extensions = { video_ads, ...custom_fields };
+
+    let text_tracks;
+
+    if (_text_tracks && _text_tracks.length > 0) {
+      const tracks = _text_tracks.map(track => {
+        const {label, kind: type, srclang: language, src: source}  = track;
+        return {label, type, language, source};
+      })
+      text_tracks = {version: '1.0', tracks};
+    }
+    const extensions = { video_ads, ...custom_fields, text_tracks };
 
     return {
       type: {
