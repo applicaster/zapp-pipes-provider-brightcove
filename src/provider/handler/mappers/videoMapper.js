@@ -58,8 +58,8 @@ export function videoMapper(imageKeys) {
 
     if (_text_tracks && _text_tracks.length > 0) {
       const tracks = _text_tracks.map(track => {
-        const {label, kind: type, srclang: language, src: source}  = track;
-        return {label, type, language, source};
+        const {label, kind, srclang: language, src: source, mime_type: type}  = track;
+        return {label, type, language, source, kind};
       })
       text_tracks = {version: '1.0', tracks};
     }
