@@ -21,3 +21,9 @@ TBC
 
 https://support.brightcove.com/oauth-get-client-credentials-using-curl
 https://support.brightcove.com/api-operations-client-credentials-requests
+
+### Setting up the brightcove account
+
+Regarding Feeds setup, generally for consuming the APIs via DSPs, these credentials are required.
+
+![screenshot of video cloud setup](./screenshotVideocloud.png)
