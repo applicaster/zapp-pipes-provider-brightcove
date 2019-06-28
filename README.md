@@ -2,9 +2,20 @@
 
 A data source provider for the brightcove CMS API
 
-### Provider Api
+### Playlist handler
+The required parameters are `id`, `client_id`, `client_secret`, `account_id`
 
-`url=[YOUR_STUDIO_PLAYLIST_PAGE_FULL_URL]?client_id=[YOUR_CLIENT_ID]&client_secret=[YOUR_CLIENT_SECRET]&account_id=[YOUR_ACCOUNT_ID]`
+To setup a playlist feed in Zapp you need to provide: ?client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>&id=<the ID of the playlist you are trying to consume>
+
+### Folder handler
+
+The required parameters are `id`, `client_id`, `client_secret`, `account_id`
+
+To setup a playlist feed in Zapp you need to provide: ?client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>&id=<the ID of the folder you are trying to consume>
+
+### Search handler
+
+TBC
 
 ### Getting your credentials
 
