@@ -56,6 +56,7 @@ Bundling the data source provider to your app is done through the feed section i
 In order to use the API, you need to obtain the following:
 
  1.`account_id` - Brightcove account id, can be obtained from the VideoCloud console.
+ 
  2.`client_id`, `client_secret` - can be obtained by following these [instructions](https://support.brightcove.com/oauth-get-client-credentials-using-curl).
  
 All feed urls should contain these parameters as follows: `&client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>`
