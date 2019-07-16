@@ -1,6 +1,6 @@
 # zapp-pipes-provider-brightcove
 
-A data source provider for the brightcove CMS API. More on brightcove can be found [here](https://www.brightcove.com/en/).
+A data source provider for the Brightcove CMS API. More on Brightcove can be found [here](https://www.brightcove.com/en/).
 
 ## Getting Started
 
@@ -53,8 +53,12 @@ Bundling the data source provider to your app is done through the feed section i
 
 ### Getting your credentials
 
-In order to use API you need to obtain `client_id`, `client_secret`, `account_id` using this [instructions](https://support.brightcove.com/oauth-get-client-credentials-using-curl).
-Feed url should be configured as follows: `&client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>`
+In order to use the API, you need to obtain the following:
+
+ 1.`account_id` - Brightcove account id, can be obtained from the VideoCloud console.
+ 2.`client_id`, `client_secret` - can be obtained by following these [instructions](https://support.brightcove.com/oauth-get-client-credentials-using-curl).
+ 
+All feed urls should contain these parameters as follows: `&client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>`
 
 ### Playlist handler
 
@@ -62,7 +66,7 @@ Retrieves a feed of all the videos in the requested playlist.
 
 | Parameter | Description                                            | Type   | Example                |
 | --------- | -------------------------------------------------------| ------ | ---------------------- |
-| id        | required. Playlist id                                  | Number | `id=5654175333001`     |
+| id        | Required. Playlist id                                  | Number | `id=5654175333001`     |
 
 Url example: `brightcove://fetchData?type=playlist&id=5654175333001&client_id=fb1e962c-cdb2-4bb8-9c32-51dfb4d8067c&client_secret=BfuwAxmyCqpMc9ngkI8Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5653786027001`
 
@@ -72,19 +76,19 @@ Retrieves a feed of all the videos in the requested folder.
 
 | Parameter | Description                                            | Type   | Example                |
 | --------- | -------------------------------------------------------| ------ | ---------------------- |
-| id        | required. Folder id                                    | Number | `id=5654175333001`     |
+| id        | Required. Folder id                                    | Number | `id=5654175333001`     |
 
 Url example: `brightcove://fetchData?type=folder&id=5654175333001&client_id=fb1e962c-cdb2-4bb8-9c32-51dfb4d8067c&client_secret=BfuwAxmyCqpMc9ngkI8Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5653786027001&id=5654175333001`
 
 ### Search handler
 
-Retrieves a feed of all the videos in a search query.
+Retrieves a feed of videos that match the search query.
 
 | Parameter | Description                                            | Type   | Example                 |
 | --------- | -------------------------------------------------------| ------ | ----------------------- |
-| item_type | optional. Type of search item. Playlists or videos     | String | `item_type=playlists`   |
-| query     | optional. Search query                                 | String | `query=comedy`          |
-| limit     | optional. Result limit                                 | Number | `limit=10`              |
-| sort_by   | optional. Sort by field                                | String | `sort_by=published_at`  |
+| item_type | Optional. Type of search item. Playlists or videos     | String | `item_type=playlists`   |
+| query     | Optional. Search query                                 | String | `query=comedy`          |
+| limit     | Optional. Result limit                                 | Number | `limit=10`              |
+| sort_by   | Optional. Sort by field                                | String | `sort_by=published_at`  |
 
 Url example: `brightcove://fetchData?type=search&item_type=playlists&sort_by=published_at&client_id=fb1e962c-cdb2-4bb8-9c32-51dfb4d8067c&client_secret=BfuwAxmyCqpMc9ngkI8Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5653786027001`
