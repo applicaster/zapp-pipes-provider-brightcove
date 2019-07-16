@@ -69,7 +69,7 @@ Retrieves a feed of all the videos in the requested playlist.
 | --------- | -------------------------------------------------------| ------ | ---------------------- |
 | id        | Required. Playlist id                                  | Number | `id=5654175333001`     |
 
-Url example: `brightcove://fetchData?type=playlist&id=5654175333001&client_id=fb1e962c-cdb2-4bb8-9c32-51dfb4d8067c&client_secret=BfuwAxmyCqpMc9ngkI8Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5653786027001`
+Url example: `brightcove://fetchData?type=playlist&id=5654175333001&client_id=fb1e489c-aeb3-2dd8-5b56-51dfb4d7031c&client_secret=ByH5ciaSx89748Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5439817827001`
 
 ### Folder handler
 
@@ -79,7 +79,7 @@ Retrieves a feed of all the videos in the requested folder.
 | --------- | -------------------------------------------------------| ------ | ---------------------- |
 | id        | Required. Folder id                                    | Number | `id=5654175333001`     |
 
-Url example: `brightcove://fetchData?type=folder&id=5654175333001&client_id=fb1e962c-cdb2-4bb8-9c32-51dfb4d8067c&client_secret=BfuwAxmyCqpMc9ngkI8Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5653786027001&id=5654175333001`
+Url example: `brightcove://fetchData?type=folder&id=5654175333001&client_id=fb1e489c-aeb3-2dd8-5b56-51dfb4d7031c&client_secret=ByH5ciaSx89748Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5439817827001`
 
 ### Search handler
 
@@ -92,4 +92,4 @@ Retrieves a feed of videos that match the search query.
 | limit     | Optional. Result limit                                 | Number | `limit=10`              |
 | sort_by   | Optional. Sort by field                                | String | `sort_by=published_at`  |
 
-Url example: `brightcove://fetchData?type=search&item_type=playlists&sort_by=published_at&client_id=fb1e962c-cdb2-4bb8-9c32-51dfb4d8067c&client_secret=BfuwAxmyCqpMc9ngkI8Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5653786027001`
+Url example: `brightcove://fetchData?type=search&item_type=playlists&sort_by=published_at&client_id=fb1e489c-aeb3-2dd8-5b56-51dfb4d7031c&client_secret=ByH5ciaSx89748Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5439817827001`
