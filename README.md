@@ -84,6 +84,7 @@ Url example: `brightcove://fetchData?type=folder&id=5654175333001&client_id=fb1e
 ### Search handler
 
 Retrieves a feed of videos that match the search query.
+Detailed info about constructing a search query can be found [here](https://support.brightcove.com/cmsplayback-api-videos-search).
 
 | Parameter | Description                                            | Type   | Example                 |
 | --------- | -------------------------------------------------------| ------ | ----------------------- |
@@ -91,5 +92,8 @@ Retrieves a feed of videos that match the search query.
 | query     | Optional. Search query                                 | String | `query=comedy`          |
 | limit     | Optional. Result limit                                 | Number | `limit=10`              |
 | sort_by   | Optional. Sort by field                                | String | `sort_by=published_at`  |
+
+Fields supported by the `sort_by` parameter:
+`name`, `reference_id`, `created_at`, `published_at`, `updated_at`, `schedule.starts_at`, `schedule.ends_at`, `state`, `plays_total`, `plays_trailing_week`.
 
 Url example: `brightcove://fetchData?type=search&item_type=playlists&sort_by=published_at&client_id=fb1e962c-cdb2-4bb8-9c32-51dfb4d8067c&client_secret=BfuwAxmyCqpMc9ngkI8Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5653786027001`
