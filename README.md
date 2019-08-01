@@ -69,7 +69,7 @@ Retrieves a feed of all the videos in the requested playlist.
 | --------- | -------------------------------------------------------| ------ | ---------------------- |
 | id        | Required. Playlist id                                  | Number | `id=5654175333001`     |
 
-Url example: `brightcove://fetchData?type=playlist&id=5654175333001&client_id=fb1e489c-aeb3-2dd8-5b56-51dfb4d7031c&client_secret=ByH5ciaSx89748Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5439817827001`
+Url example: `brightcove://fetchData?type=playlist&id=5654175333001&client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>`
 
 ### Folder handler
 
@@ -79,17 +79,27 @@ Retrieves a feed of all the videos in the requested folder.
 | --------- | -------------------------------------------------------| ------ | ---------------------- |
 | id        | Required. Folder id                                    | Number | `id=5654175333001`     |
 
-Url example: `brightcove://fetchData?type=folder&id=5654175333001&client_id=fb1e489c-aeb3-2dd8-5b56-51dfb4d7031c&client_secret=ByH5ciaSx89748Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5439817827001`
+Url example: `brightcove://fetchData?type=folder&id=5654175333001&client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>`
 
 ### Search handler
 
-Retrieves a feed of videos that match the search query.
+Retrieves a feed of videos or playlists that match the search query.
+
+Detailed info about constructing a search Videos query can be found [here](https://support.brightcove.com/cmsplayback-api-videos-search).
+
+Detailed info about constructing a search Playlists query can be found [here](https://support.brightcove.com/cms-api-playlists-search).
 
 | Parameter | Description                                            | Type   | Example                 |
 | --------- | -------------------------------------------------------| ------ | ----------------------- |
-| item_type | Optional. Type of search item. Playlists or videos     | String | `item_type=playlists`   |
+| item_type | Optional. Type of search item. Playlists or videos. Retrieves videos if not specified     | String | `item_type=playlists`   |
 | query     | Optional. Search query                                 | String | `query=comedy`          |
 | limit     | Optional. Result limit                                 | Number | `limit=10`              |
-| sort_by   | Optional. Sort by field                                | String | `sort_by=published_at`  |
+| sort_by   | Optional. Sort by field                                | String | `sort_by=name`  |
 
-Url example: `brightcove://fetchData?type=search&item_type=playlists&sort_by=published_at&client_id=fb1e489c-aeb3-2dd8-5b56-51dfb4d7031c&client_secret=ByH5ciaSx89748Qu4md2dcCl4IO1UGKlKiuHzebqg-dTDLat_43V6lHVQEY0YAZh-oLer60xsXOPAwgXQ&account_id=5439817827001`
+Fields supported by the `sort_by` parameter while performing Videos search:
+`name`, `reference_id`, `created_at`, `published_at`, `updated_at`, `schedule.starts_at`, `schedule.ends_at`, `state`, `plays_total`, `plays_trailing_week`.
+
+Fields supported by the `sort_by` parameter while performing Playlists search:
+`name`, `updated_at`.
+
+Url example: `brightcove://fetchData?type=search&item_type=playlists&sort_by=name&client_id=<your client id>&client_secret=<client_secret>&account_id=<account ID>`
