@@ -3,7 +3,12 @@ import { config } from '../../../config';
 
 export function playlistMapper(client_id, client_secret, account_id) {
   return function(playlist) {
-    const { id, name: title, published_at } = playlist;
+    const {
+      id,
+      name: title,
+      published_at,
+      description: summary
+    } = playlist;
 
     const d = moment(published_at).toDate();
     const published = moment(d).format();
@@ -23,6 +28,7 @@ export function playlistMapper(client_id, client_secret, account_id) {
       id,
       title,
       published,
+      summary,
       content
     };
   };
