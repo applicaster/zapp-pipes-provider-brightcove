@@ -7,10 +7,12 @@ export function videoMapper(imageKeys) {
       id,
       name: title,
       published_at,
+      description: summary,
       src = '',
       images,
       cue_points,
       duration = 0,
+      tags,
       custom_fields = {},
       text_tracks: _text_tracks
     } = video;
@@ -60,10 +62,18 @@ export function videoMapper(imageKeys) {
       const tracks = _text_tracks.map(track => {
         const {label, kind, srclang: language, src: source, mime_type: type}  = track;
         return {label, type, language, source, kind};
-      })
+      });
+
       text_tracks = {version: '1.0', tracks};
     }
-    const extensions = { video_ads, ...custom_fields, text_tracks };
+
+    const extensions = {
+      duration,
+      tags,
+      video_ads,
+      ...custom_fields,
+      text_tracks
+    };
 
     return {
       type: {
@@ -71,6 +81,7 @@ export function videoMapper(imageKeys) {
       },
       id,
       title,
+      summary,
       published,
       media_group,
       content,
