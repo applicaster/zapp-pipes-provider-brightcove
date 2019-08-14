@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export function videoMapper(imageKeys) {
   return function(video) {
-    const {
+    let {
       id,
       name: title,
       published_at,
@@ -41,6 +41,19 @@ export function videoMapper(imageKeys) {
         href: video.link.url
       };
     }
+
+    let {
+      ds_product_ids,
+      requires_authentication
+    } = custom_fields;
+
+    if (requires_authentication !== undefined) {
+      requires_authentication = requires_authentication === 'true' ? true : false;
+    }
+
+    ds_product_ids = ds_product_ids ? ds_product_ids.split(',') : undefined;
+
+    custom_fields = {...custom_fields, requires_authentication, ds_product_ids};
 
     let video_ads;
     if (cue_points && cue_points.length > 0) {
