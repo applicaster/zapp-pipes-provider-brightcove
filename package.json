@@ -1,6 +1,6 @@
 {
   "name": "@applicaster/zapp-pipes-provider-brightcove",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "Brightcove provider",
   "main": "lib/index.js",
   "scripts": {
