@@ -1,9 +1,10 @@
 import { createMediaGroupItem } from '../../../utils';
 import moment from 'moment';
+import { stringToBool, stringToArr } from "../../../utils";
 
 export function videoMapper(imageKeys) {
   return function(video) {
-    let {
+    const {
       id,
       name: title,
       published_at,
@@ -13,9 +14,10 @@ export function videoMapper(imageKeys) {
       cue_points,
       duration = 0,
       tags,
-      custom_fields = {},
       text_tracks: _text_tracks
     } = video;
+
+    let { custom_fields = {} } = video;
 
     const content = { src, type: 'video/hls' };
     const d = moment(published_at).toDate();
@@ -47,13 +49,9 @@ export function videoMapper(imageKeys) {
       requires_authentication
     } = custom_fields;
 
-    if (requires_authentication !== undefined) {
-      requires_authentication = requires_authentication === 'true' ? true : false;
-    }
+    requires_authentication = stringToBool(requires_authentication);
 
-    ds_product_ids = ds_product_ids ? ds_product_ids.split(',') : undefined;
-
-    custom_fields = {...custom_fields, requires_authentication, ds_product_ids};
+    ds_product_ids = stringToArr(ds_product_ids);
 
     let video_ads;
     if (cue_points && cue_points.length > 0) {
@@ -85,6 +83,8 @@ export function videoMapper(imageKeys) {
       tags,
       video_ads,
       ...custom_fields,
+      requires_authentication,
+      ds_product_ids,
       text_tracks
     };
 
