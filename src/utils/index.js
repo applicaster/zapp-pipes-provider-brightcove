@@ -22,6 +22,16 @@ export function createFeedItem(entry, title) {
   };
 }
 
+export function stringToBool(string) {
+    if (string !== undefined) {
+        return string.toLowerCase() === 'true' ? true : false;
+    }
+}
+
+export function stringToArr(string) {
+    return string ? string.split(',') : undefined;
+}
+
 export function updateParamsFromUrl(params) {
   const { url = '' } = params;
   let q = {};
