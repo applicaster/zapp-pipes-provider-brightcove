@@ -22,14 +22,14 @@ export async function getPlaylist(
     );
 
     const { name: title } = playlist;
-    let {
-      data: { count }
-    } = await axios.get(
+    const { data } = await axios.get(
       `${
         config.brightcove.cmsAPIBaseUrl
-      }accounts/${accountId}/counts/playlists/${playlistId}/videos`,
+      }accounts/${accountId}/playlists/${playlistId}/videos`,
       { headers }
     );
+
+    let count = data.length;
 
     let allItems = [];
     let offset = 0;
