@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios/axios-config';
 import { config } from '../../config';
 import btoa from 'btoa';
 import tokensHolder from '../utils/tokensHolder';
@@ -37,7 +37,8 @@ export function getAuthenticationHeaders(client_id, client_secret) {
   return authenticate(client_id, client_secret).then(accessToken => {
     return {
       Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Content-Encoding': 'gzip, deflate'
     };
   });
 }

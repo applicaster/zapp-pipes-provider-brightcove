@@ -2,7 +2,8 @@ export const config = {
   brightcove: {
     baseUrl: '',
     tokenUrl: 'https://oauth.brightcove.com/v4/access_token',
-    cmsAPIBaseUrl: 'https://cms.api.brightcove.com/v1/'
+    cmsAPIBaseUrl: 'https://cms.api.brightcove.com/v1/',
+    cmsAPIHost: 'cms.api.brightcove.com'
   },
   provider: {
     name: 'brightcove'

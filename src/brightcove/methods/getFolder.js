@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios/axios-config';
 import { config } from '../../config';
 import { getAuthenticationHeaders } from '../methods/authenticate';
 import { getFolderInfo } from './getFolderInfo';
