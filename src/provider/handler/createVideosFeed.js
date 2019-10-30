@@ -30,6 +30,7 @@ export function createVideosFeed(params) {
 
           if (videoSources.length > 0) {
             video.src = videoSources[0].src;
+            video.type = videoSources[0].type;
           }
           return video;
         });

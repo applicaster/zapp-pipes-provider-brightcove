@@ -28,7 +28,8 @@
   "dependencies": {
     "axios": "^0.17.1",
     "btoa": "^1.1.2",
-    "moment": "^2.23.0"
+    "moment": "^2.23.0",
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
     "@applicaster/zapp-pipes-dev-kit": "^1.0.9",

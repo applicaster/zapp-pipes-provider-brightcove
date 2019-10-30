@@ -1,4 +1,5 @@
 import { commands } from './comands';
+import { config } from "../../config";
 import {
   updateParamsFromUrl,
   updateParamsFromPluginConfiguration
@@ -8,6 +9,9 @@ import { createPlaylistsFeed } from './createPlaylistsFeed';
 
 export const handler = providerInterface => params => {
   const { type } = params;
+  const { platform } = providerInterface.appData();
+
+  config.platform = platform.toLowerCase() || '';
 
   params = updateParamsFromUrl(params);
   params = updateParamsFromPluginConfiguration(providerInterface, params);

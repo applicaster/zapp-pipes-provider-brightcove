@@ -1,6 +1,7 @@
 import { createMediaGroupItem } from '../../../utils';
 import moment from 'moment';
 import { stringToBool, stringToArr } from "../../../utils";
+import {config} from "../../../config";
 
 export function videoMapper(imageKeys) {
   return function(video) {
@@ -10,6 +11,7 @@ export function videoMapper(imageKeys) {
       published_at,
       description: summary,
       src = '',
+      type: videoType = '',
       images,
       cue_points,
       duration = 0,
@@ -19,7 +21,11 @@ export function videoMapper(imageKeys) {
 
     let { custom_fields = {} } = video;
 
-    const content = { src, type: 'video/hls' };
+    const type = (videoType.toLowerCase() === config.video.HLS.type)
+      ? config.video.HLS.atomVideoType
+      : config.video.MP4.atomVideoType;
+
+    const content = { src, type };
     const d = moment(published_at).toDate();
     const published = moment(d).format();
     let media_group = imageKeys
