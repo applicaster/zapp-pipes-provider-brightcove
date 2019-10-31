@@ -1,8 +1,33 @@
-import axios from 'axios';
+import axios from '../../axios/axios-config';
 import { config } from '../../config';
 import { getAuthenticationHeaders } from '../methods/authenticate';
+import { getDashSource, getHlsSource, getMP4Source, getHttpsSource, getItemWithSrc } from '../utils/videoTypesHelpers';
 
-export function getVideoSource(client_id, client_secret, accountId, videoId) {
+export function getVideoSource(client_id, client_secret, accountId, videoId, platform) {
+
+  function getVideo(data) {
+    let videoItems;
+    switch (platform) {
+      case config.platform.ANDROID:
+        videoItems = getVideoForAndroid(data);
+        break;
+      case config.platform.IOS:
+        videoItems = getVideoForIos(data);
+        break;
+      default:
+        videoItems = getMP4Source(data);
+    }
+    return videoItems ? getHttpsSource(videoItems) : getItemWithSrc(data);
+  }
+
+  function getVideoForAndroid(data) {
+    return getDashSource(data) || getHlsSource(data) || getMP4Source(data);
+  }
+
+  function getVideoForIos(data) {
+    return getHlsSource(data) || getMP4Source(data);
+  }
+
   return getAuthenticationHeaders(client_id, client_secret)
     .then(headers => {
       return axios.get(
@@ -12,30 +37,13 @@ export function getVideoSource(client_id, client_secret, accountId, videoId) {
         { headers }
       );
     })
-    .then(result => {
-      const source = result.data.reduce((currentSource, element) => {
-        if (
-          element.src &&
-          element.codec &&
-          element.codec.toLowerCase() === 'h264' &&
-          element.container &&
-          element.container.toLowerCase() === 'mp4'
-        ) {
-          if (currentSource) {
-            if (currentSource.height < element.height) {
-              return element;
-            }
-          } else {
-            return element;
-          }
-        }
-        return currentSource;
-      }, null);
-      const { src = '' } = source || {};
-      const response = { videoId, src };
-      return response;
+    .then(({ data }) => {
+      const videoItem = getVideo(data);
+      const { src = '', type = '' } = videoItem || {};
+      return { videoId, src, type };
     })
     .catch(err => {
+      console.log(err);
       return {};
     });
 }

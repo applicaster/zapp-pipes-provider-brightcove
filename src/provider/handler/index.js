@@ -8,7 +8,9 @@ import { createPlaylistsFeed } from './createPlaylistsFeed';
 
 export const handler = providerInterface => params => {
   const { type } = params;
+  const { platform } = providerInterface.appData();
 
+  params.platform = platform.toLowerCase() || '';
   params = updateParamsFromUrl(params);
   params = updateParamsFromPluginConfiguration(providerInterface, params);
 
