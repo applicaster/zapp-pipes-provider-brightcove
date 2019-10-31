@@ -9,7 +9,8 @@ export function createVideosFeed(params) {
       client_secret,
       account_id,
       title: ptitle,
-      imageKeys = 'thumbnail:image_base|poster:image1'
+      imageKeys = 'thumbnail:image_base|poster:image1',
+      platform
     } = params;
 
     return Promise.all(
@@ -18,7 +19,8 @@ export function createVideosFeed(params) {
           client_id,
           client_secret,
           account_id,
-          video.id
+          video.id,
+          platform
         );
       })
     )
@@ -29,8 +31,9 @@ export function createVideosFeed(params) {
           });
 
           if (videoSources.length > 0) {
-            video.src = videoSources[0].src;
-            video.type = videoSources[0].type;
+            const [{ src, type }] = videoSources;
+            video.src = src;
+            video.type = type;
           }
           return video;
         });

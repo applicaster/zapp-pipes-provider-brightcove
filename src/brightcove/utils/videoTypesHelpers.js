@@ -1,4 +1,4 @@
-import { config } from "../../config";
+import { config } from '../../config';
 import _url from 'url';
 
 function getUnsupportedProfiles(item) {
@@ -11,7 +11,7 @@ export function getDashSource(data) {
   const videoArr = data.filter(item =>
     item.src &&
     item.type &&
-    item.type.toLowerCase() === config.video.DASH.type &&
+    item.type.toLowerCase() === config.video.DASH.type.toLowerCase() &&
     !getUnsupportedProfiles(item)
   );
 
@@ -22,7 +22,7 @@ export function getHlsSource(data) {
   const videoArr = data.filter(item =>
     item.src &&
     item.type &&
-    item.type.toLowerCase() === config.video.HLS.type
+    item.type.toLowerCase() === config.video.HLS.type.toLowerCase()
   );
 
   return (videoArr.length > 0) ? videoArr : undefined;
@@ -32,12 +32,12 @@ export function getMP4Source(data) {
   const videoArr = data.filter(item =>
     item.src &&
     item.codec &&
-    item.codec.toLowerCase() === config.video.MP4.codec &&
+    item.codec.toLowerCase() === config.video.MP4.codec.toLowerCase() &&
     item.container &&
-    item.container.toLowerCase() === config.video.MP4.container
+    item.container.toLowerCase() === config.video.MP4.container.toLowerCase()
   );
 
-  return (videoArr.length > 0) ? getVideoWithLowestBitrate(videoArr) : undefined;
+  return (videoArr.length > 0) ? getVideoWithMinBitrate(videoArr) : undefined;
 }
 
 export function getHttpsSource(data) {
@@ -54,13 +54,9 @@ export function getItemWithSrc(data) {
   return data.find(item => item.src);
 }
 
-function getVideoWithLowestBitrate(array) {
-  let min = array[0].encoding_rate;
-  for (let i = 1; i < array.length; ++i) {
-    if (array[i].encoding_rate < min) {
-      min = array[i].encoding_rate;
-    }
-  }
+function getVideoWithMinBitrate(array) {
+  const bitrateArray = array.map(item => item.encoding_rate);
+  const min = Math.min.apply(null, bitrateArray);
 
   return array.filter(item => item.encoding_rate === min);
 }

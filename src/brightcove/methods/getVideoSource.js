@@ -1,17 +1,17 @@
 import axios from '../../axios/axios-config';
 import { config } from '../../config';
 import { getAuthenticationHeaders } from '../methods/authenticate';
-import { getDashSource, getHlsSource, getMP4Source, getHttpsSource, getItemWithSrc } from "../utils/videoTypesHelpers";
+import { getDashSource, getHlsSource, getMP4Source, getHttpsSource, getItemWithSrc } from '../utils/videoTypesHelpers';
 
-export function getVideoSource(client_id, client_secret, accountId, videoId) {
+export function getVideoSource(client_id, client_secret, accountId, videoId, platform) {
 
   function getVideo(data) {
     let videoItems;
-    switch (config.platform) {
-      case 'android':
+    switch (platform) {
+      case config.platform.ANDROID:
         videoItems = getVideoForAndroid(data);
         break;
-      case 'ios':
+      case config.platform.IOS:
         videoItems = getVideoForIos(data);
         break;
       default:

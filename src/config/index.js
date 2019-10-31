@@ -8,7 +8,10 @@ export const config = {
   provider: {
     name: 'brightcove'
   },
-  platform: null,
+  platform: {
+    ANDROID: 'android',
+    IOS: 'ios'
+  },
   video: {
     DASH: {
       type: 'application/dash+xml',

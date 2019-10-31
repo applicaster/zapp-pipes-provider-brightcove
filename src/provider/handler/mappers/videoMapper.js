@@ -1,7 +1,7 @@
 import { createMediaGroupItem } from '../../../utils';
 import moment from 'moment';
-import { stringToBool, stringToArr } from "../../../utils";
-import {config} from "../../../config";
+import { stringToBool, stringToArr } from '../../../utils';
+import {config} from '../../../config';
 
 export function videoMapper(imageKeys) {
   return function(video) {
