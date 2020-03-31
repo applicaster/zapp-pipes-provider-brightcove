@@ -1,4 +1,4 @@
-import axios from '../../axios/axios-config';
+import axios from 'axios';
 import { config } from '../../config';
 import { getAuthenticationHeaders } from '../methods/authenticate';
 import { getDashSource, getHlsSource, getMP4Source, getHttpSource, getItemWithSrc } from '../utils/videoTypesHelpers';
