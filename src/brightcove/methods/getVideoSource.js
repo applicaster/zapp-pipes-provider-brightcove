@@ -1,7 +1,7 @@
-import axios from '../../axios/axios-config';
+import axios from 'axios';
 import { config } from '../../config';
 import { getAuthenticationHeaders } from '../methods/authenticate';
-import { getDashSource, getHlsSource, getMP4Source, getHttpsSource, getItemWithSrc } from '../utils/videoTypesHelpers';
+import { getDashSource, getHlsSource, getMP4Source, getHttpSource, getItemWithSrc } from '../utils/videoTypesHelpers';
 
 export function getVideoSource(client_id, client_secret, accountId, videoId, platform) {
 
@@ -17,7 +17,7 @@ export function getVideoSource(client_id, client_secret, accountId, videoId, pla
       default:
         videoItems = getMP4Source(data);
     }
-    return videoItems ? getHttpsSource(videoItems) : getItemWithSrc(data);
+    return videoItems ? getHttpSource(videoItems) : getItemWithSrc(data);
   }
 
   function getVideoForAndroid(data) {

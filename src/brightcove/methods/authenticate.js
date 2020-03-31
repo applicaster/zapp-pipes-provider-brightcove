@@ -1,4 +1,4 @@
-import axios from '../../axios/axios-config';
+import axios from 'axios';
 import { config } from '../../config';
 import btoa from 'btoa';
 import tokensHolder from '../utils/tokensHolder';

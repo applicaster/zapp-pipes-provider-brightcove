@@ -40,14 +40,14 @@ export function getMP4Source(data) {
   return (videoArr.length > 0) ? getVideoWithMinBitrate(videoArr) : undefined;
 }
 
-export function getHttpsSource(data) {
+export function getHttpSource(data) {
   return data.find(item => {
     const { src } = item;
     const aUrl = _url.parse(src, true);
     if (aUrl.protocol === 'https:') {
       return item
     }
-  });
+  }) || data[0];
 }
 
 export function getItemWithSrc(data) {

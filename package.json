@@ -1,6 +1,6 @@
 {
   "name": "@applicaster/zapp-pipes-provider-brightcove",
-  "version": "1.1.14",
+  "version": "1.2.0",
   "description": "Brightcove provider",
   "main": "lib/index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "ramda": "^0.26.1"
   },
   "devDependencies": {
-    "@applicaster/zapp-pipes-dev-kit": "^1.0.9",
+    "@applicaster/zapp-pipes-dev-kit": "^1.4.1",
     "ava": "^0.19.0",
     "babel-cli": "^6.24.0",
     "babel-preset-env": "^1.3.2",
