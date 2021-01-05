@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/applicaster/zapp-pipes-provider-brightcove#readme",
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "btoa": "^1.1.2",
     "moment": "^2.23.0",
     "ramda": "^0.26.1"
